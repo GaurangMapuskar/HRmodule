@@ -1,0 +1,33 @@
+{% extends 'base(user).html' %}
+{%block title%}Schedule{%endblock title%}
+{%block body%}
+<div class="my-5 py-5 px-4">
+<h3>Weekly Schedule</h3>
+<table class="table-primary">
+  <thead>
+    <tr>
+      <th scope="col">Monday</th>
+      <th scope="col">Tuesday</th>
+      <th scope="col">Wednesday</th>
+      <th scope="col">Thursday</th>
+      <th scope="col">Friday</th>
+      <th scope="col">Saturday</th>
+      <th scope="col">Sunday</th>      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>{{monday}}</td>
+      <td>{{tuesday}}</td>
+      <td>{{wednesday}}</td>
+      <td>{{thurday}}</td>
+      <td>{{friday}}</td>
+      <td>{{saturday}}</td>
+      <td>{{sunday}}</td>
+    </tr>
+    <tr>  
+
+</table>
+
+{%endblock body%}

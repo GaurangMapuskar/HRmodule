@@ -1,0 +1,39 @@
+{% extends 'base(user).html' %}
+{%block title%}Profile{%endblock title%}
+
+{%block body%}
+ {% comment %} {% for sch in sch %}
+ <div class="card px-2" style="width: 30rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{sch.task}}</h5>
+      <p class="card-text">{{sch.deadlinedate}}</p>
+      <p class="card-text">{{sch.deadlinetime}}</p>
+      <a href="project(user)" class="card-link">Completed</a>
+    </div>
+  </div> {% endcomment %}
+
+  <div class="wrapper">
+    <header>
+      <p class="current-date"></p>
+      <div class="icons">
+        <span id="prev" class="material-symbols-rounded">chevron_left</span>
+        <span id="next" class="material-symbols-rounded">chevron_right</span>
+      </div>
+    </header>
+    <div class="calendar">
+      <ul class="weeks">
+        <li>Sun</li>
+        <li>Mon</li>
+        <li>Tue</li>
+        <li>Wed</li>
+        <li>Thu</li>
+        <li>Fri</li>
+        <li>Sat</li>
+      </ul>
+      <ul class="days"></ul>
+    </div>
+  </div>
+  
+ 
+ {% comment %} {% endfor %} {% endcomment %}
+{%endblock body%}

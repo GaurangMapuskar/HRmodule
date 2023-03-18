@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{%block title%}Job Posting{%endblock title%}
+{%block body%}
+
+<form method="post" action="jobposting">
+  {% csrf_token %}
+  
+   <div class="mx-2">
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Vacany Type</label>
+      <input type="text" class="form-control" id="formGroupExampleInput2" name="vacany" placeholder="Enter vacany type">
+    </div>
+
+    
+  <div class="row pl-2">
+  <div class="sm-4" style="padding: inherit" >
+    <select class="form-select my-2 sm-2" name="experience"aria-label="Default select example">
+      <option selected>Years of Experience</option>
+      <option value="None">None</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+    </div>
+
+    <div class="col-mx-2" style="padding: inherit">
+      <select class="form-select my-2 sm-2" name="experience"aria-label="Default select example">
+        <option selected>Job type</option>
+        <option value="permenant">permenant</option>
+        <option value="temporary">temporary</option>
+        <option value="intern">Intern</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Consern Manager</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" name="name">
+  </div>
+  
+  <div class="row pl-2">
+    <div class="col-sm-4">
+      <label for="formGroupExampleInput2" class="form-label">Email</label>
+      <input type="text" class="form-control" id="formGroupExampleInput2" name="email" placeholder="Enter your email">
+    </div>
+    <div class="col-sm-4">
+      <label for="formGroupExampleInput2" class="form-label">contact</label>
+      <input type="text" class="form-control" id="formGroupExampleInput2" name="contact" placeholder="Enter your contact">
+    </div>
+   </div>
+
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">Minimum qualification</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" name="minqualification">
+  </div>
+
+  
+  <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label">comment</label>
+    <input type="text" class="form-control" id="formGroupExampleInput2" name="comments" placeholder="Enter any comment">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+ </div>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show my-5" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+</form>
+{%endblock body%}

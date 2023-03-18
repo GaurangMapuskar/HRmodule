@@ -1,0 +1,86 @@
+{% extends 'base(user).html' %}
+{%block title%}Application Form{%endblock title%}
+{%block body%}
+<div class="my-5 px-3">
+<H1>Application Form</H1>
+        <div class="row pl-2">
+            <label for="Name" class="form-label">Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" name = "Fname" placeholder="First name" aria-label="First name">
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name = "Mname" placeholder="Middle name" aria-label="Middle name">
+              </div>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" name = "Lname" placeholder="Last name" aria-label="Last name">
+            </div>
+        </div>
+       <div class="row pl-2">
+        <div class="col-sm-5">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" id="inputEmail">
+        </div>
+  
+        <div class="col-sm-5">
+          <label for="contact" class="form-label">Contact</label>
+          <input type="Number" class="form-control" name = "contact" id="contact">
+        </div>
+       </div>
+
+        <div class="col-sm-5">
+          <label for="aadhaar" class="form-label">Aadhaar Number</label>
+          <input type="Number" class="form-control" name = "aadhaar" id="aadhaar">
+        </div>
+  
+  
+        <div class="col-sm-10">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" name = "address" id="inputAddress" placeholder="Enter Address">
+        </div>
+  
+        <div class="col-sm-4">
+          <select class="form-select my-2 " name="gender"aria-label="Default select example">
+            <option selected>Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          </div>
+      <div class="row pl-2">
+        <div class="col-md-5">
+          <label for="inputState" class="form-label">State</label>
+          <input type="text" class="form-control" name = "state"id="inputState">
+          {% comment %} <select id="inputState" class="form-select">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select> {% endcomment %}
+        </div>
+  
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" name = "city" id="inputCity">
+          </div>
+  
+        <div class="col-sm-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="Number" class="form-control" name = "zip" id="inputZip">
+        </div>
+      </div>
+  
+        {% comment %} <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div> {% endcomment %}
+        {% comment %} <button type="submit" class="btn btn-primary">Submit</button> {% endcomment %}
+        <div class="col-sm-8">
+            <label for="inputZip" class="form-label">Education</label>
+            <input type="text" class="form-control" name = "education" id="inputZip">
+          </div>
+          
+ <button type="submit" class="btn btn-primary">Submit</button>
+
+        </div>
+{%endblock body%}

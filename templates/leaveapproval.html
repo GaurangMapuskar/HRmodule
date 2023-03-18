@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{%block title%}Leave Approval{%endblock title%}
+{%block body%}
+<table class="table table-hover table-primary table-stripped">
+  <thead>
+      <tr>
+        <th scope="col">Employee SSN</th>
+        <th scope="col">Name</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Leave Type</th>
+        <th scope="col">Reason</th>
+        <th scope="col">Approve</th>
+        <th scope="col">Deny</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for app in app %}
+      <tr>
+        <th scope="row">{{app.EmpSSN}}</th>
+        <td>{{app.name}}</td>
+        <td>{{app.sdate}}</td>
+        <td>{{app.edate}}</td>
+        <td>{{app.leavetype}}</td>
+        <td>{{app.reason}}</td>
+        <td><a class="btn btn-primary" href="leaveapprove{{app.EmpSSN}}" role="button">Approve</a>
+        </td>
+        <td><a class="btn btn-primary" href="leavedeny{{app.EmpSSN}}" role="button">Deny</a>
+        </td>
+      </tr>
+      {% endfor %}
+</table>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show my-5" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+
+{%endblock body%}
+

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{%block title%}Add Attendance{%endblock title%}
+{%block body%}
+<form method="post" action="addattendance">
+  {% csrf_token %}
+
+  <H1>Add Attendance</H1>
+<div class="my-5 py-5 px-3">
+    <div class="col-sm-4">
+        <select class="form-select" aria-label="Default select example" name="employee">
+        <option selected>Employee</option>
+        {% for att in att %}
+         <option value="{{att.EmpSSN}}">{{att.Fname}}{{att.Lname}}</option>
+         {% endfor %}
+       </select>
+
+    </div>
+    
+    <div class="row my-2 pl-2">
+        <div class="col-sm-3">
+          <label for="formGroupExampleInput" class="form-label">In-time</label>
+          <input type="time" class="form-control" name="intime" id="formGroupExampleInput" >
+        </div>
+        <div class="col-sm-3">
+            <label for="formGroupExampleInput" class="form-label">Out-time</label>
+            <input type="time" class="form-control" name="outtime" id="formGroupExampleInput" >
+          </div>
+        <div class="col-sm-3">
+          <label for="formGroupExampleInput2" class="form-label">Date</label>
+          <input type="date" class="form-control" name="date" id="formGroupExampleInput2">
+        </div>
+    </div>  
+    <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+
+
+
+{% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show my-5" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  </div>
+  {% endfor %}
+{% endif %}
+
+</form>
+
+{%endblock body%}

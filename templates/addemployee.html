@@ -1,0 +1,368 @@
+{% extends 'base.html' %}
+{%block title%}Employee{%endblock title%}
+{%block body%}
+<form method="post" action="addemployee" class="px-5 my-5">
+  {% csrf_token %}
+  {% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show my-5" role="alert">
+  {{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+      <H1>Personal Details</H1>
+        <div class="row pl-2">
+            <label for="Name" class="form-label">Name :   </label>
+
+            <div class="col-sm-3">
+              <input type="text" class="form-control" name = "Fname" placeholder="First name" aria-label="First name">
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name = "Mname" placeholder="Middle name" aria-label="Middle name">
+              </div>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" name = "Lname" placeholder="Last name" aria-label="Last name">
+            </div>
+        </div>
+        <div class="row pl-2">
+        <div class="col-sm-5">
+          <label for="inputEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" name="email" id="inputEmail">
+        </div>
+  
+        <div class="col-sm-5">
+          <label for="contact" class="form-label">Contact</label>
+          <input type="Number" class="form-control" name = "contact" id="contact">
+        </div>
+      </div>
+
+        <div class="col-sm-5">
+          <label for="aadhaar" class="form-label">Aadhaar Number</label>
+          <input type="Number" class="form-control" name = "aadhaar" id="aadhaar">
+        </div>
+  
+  
+        <div class="col-sm-10">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" name = "address" id="inputAddress" placeholder="Enter Address">
+        </div>
+  
+        <div class="mb-4 col-sm-4" style="width=40rem">
+          <select class="form-select my-4 sm-4" style="width: fit-content;
+          border-radius: 2rem;" name="gender"aria-label="Default select example">
+            <option selected>Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+
+        <div class="col-sm-10">
+          <label for="Photo" class="form-label">EMployee Image</label>
+          <input type="file" class="form-control" name = "face" id="face">
+        </div>
+
+       
+        <div class="row pl-2">
+        <div class="col-md-5">
+          <label for="inputState" class="form-label">State</label>
+          <input type="text" class="form-control" name = "state"id="inputState">
+          {% comment %} <select id="inputState" class="form-select">
+            <option selected>Choose...</option>
+            <option>...</option>
+          </select> {% endcomment %}
+        </div>
+  
+        <div class="col-md-3">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" name = "city" id="inputCity">
+          </div>
+  
+        <div class="col-sm-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="Number" class="form-control" name = "zip" id="inputZip">
+        </div>
+      </div>
+
+  
+        {% comment %} <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div> {% endcomment %}
+        {% comment %} <button type="submit" class="btn btn-primary">Submit</button> {% endcomment %}
+          
+
+    <div class="my-5">
+      <H1>Religion</H1>
+    <div class="row">
+      <div class="col-sm-5">
+        <label for="Religion" class="form-label">Religion</label>
+        <input type="text" class="form-control" name = "religion" id="religion">
+      </div>
+
+      <div class="col-sm-5">
+        <label for="subcaste" class="form-label">Sub-Caste</label>
+        <input type="text" class="form-control" name = "subcaste" id="subcaste">
+      </div>
+
+      <div class="col-sm-5">
+        <label for="mother-tounge" class="form-label">Mother Tounge</label>
+        <input type="text" class="form-control" name = "mothertounge" id="mother-tounge">
+      </div>
+    </div>
+    
+    <div class="my-5">
+      <H1>Bank Details</H1>
+          <div class="row pl-2">
+            <div class="col-sm-5">
+              <label for="Bankname" class="form-label">Bank Name</label>
+              <input type="text" class="form-control" name = "Bankname" id="Bankname">
+            </div>
+    
+            <div class="col-sm-5">
+                <label for="Bankbranch" class="form-label">Branch Name</label>
+                <input type="text" class="form-control" name = "Bankbranch" id="Bankbranch">
+              </div>
+
+            </div>
+            <div class="row pl-2">
+            <div class="col-sm-5">
+              <label for="BankAC" class="form-label">Bank Account Number</label>
+              <input type="Number" class="form-control" name = "BankAC" id="BankAC">
+            </div>
+    
+            <div class="col-sm-5">
+              <label for="IFSCCode" class="form-label">IFSC Code</label>
+              <input type="text" class="form-control" name = "IFSCCode" id="IFSCCode">
+            </div>
+          </div>
+    
+            {% comment %} <div class="col-md-5">
+              <label for="inputState" class="form-label">State</label>
+              <input type="text" class="form-control" id="inputState">
+              {% comment %} <select id="inputState" class="form-select">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select> 
+            </div>
+    
+            <div class="col-md-3">
+                <label for="inputCity" class="form-label">City</label>
+                <input type="text" class="form-control" id="inputCity">
+              </div>
+    
+            <div class="col-sm-2">
+              <label for="inputZip" class="form-label">Zip</label>
+              <input type="text" class="form-control" id="inputZip">
+            </div>
+             {% endcomment %}
+            {% comment %} <div class="col-12">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                  Check me out
+                </label>
+              </div>
+            </div> {% endcomment %}
+    
+            {% comment %} <div class="col-12">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>  {% endcomment %}
+      </div>
+
+    <div class="my-5">
+      <H1>Work Details</H1>
+        
+      <div class="row pl-2">
+        <div class="col-sm-5">
+          <label for="inputEmail" class="form-label">Employee SSN</label>
+          <input type="text" class="form-control" name = "EmpSSN" id="EmpSSN">
+        </div>
+  
+        <div class="col-sm-5">
+          <label for="post" class="form-label">Job Post</label>
+          <input type="text" class="form-control" name = "post" id="post">
+        </div>
+      </div>
+  
+        
+        <div class="sm-4">
+          <select class="form-select my-2 sm-2" style="width: fit-content;
+          border-radius: 2rem;"aria-label="Default select example">
+            <option selected>Employee Type</option>
+            <option value="permenant">Permenant</option>
+            <option value="temporary">Temporary</option>
+            <option value="intern">Intern</option>
+          </select>
+          </div>
+  
+        <div class="row pl-2">
+        <div class="col-md-3">
+            <label for="joining_date" class="form-label">Joining Date</label>
+            <input type="date" class="form-control" name = "joining_date" id="joining_date">
+          </div>
+  
+        <div class="col-sm-2">
+          <label for="branch" class="form-label">Office Branch</label>
+          <input type="text" class="form-control" name = "branch" id="branch">
+        </div>
+        </div
+  
+        <div class="col-sm-10">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" class="form-control" name = "description"id="description">
+        </div>
+  
+  
+        {% comment %} <div class="col-12">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck">
+            <label class="form-check-label" for="gridCheck">
+              Check me out
+            </label>
+          </div>
+        </div> {% endcomment %}
+      </div>
+
+      <div class="my-5">
+        <H1>Education</H1>
+          
+        <H2>10th Education</H2>
+        <div class="row pl-2">
+          <div class="col-sm-5">
+            <label for="school" class="form-label">School</label>
+            <input type="text" class="form-control" name = "school" id="school">
+          </div>
+    
+          <div class="col-sm-5">
+            <label for="10board" class="form-label">10th Board</label>
+            <input type="text" class="form-control" name = "10board" id="10board">
+          </div>
+        </div>
+        
+        <div class="row pl-2">
+          <div class="col-sm-5">
+            <label for="10year" class="form-label">Passout year</label>
+            <input type="Number" class="form-control" name = "10year" id="10year">
+          </div>
+    
+    
+          <div class="col-sm-5">
+              <label for="10percentage" class="form-label">Passing Percentage</label>
+              <input type="Number" class="form-control" name = "10percentage" id="10percentage">
+            </div>
+          </div>
+    
+          <H2>12th Education</H2>
+          <div class="row pl-2">
+          <div class="col-sm-5">
+            <label for="juniorcollege" class="form-label">Junior College</label>
+            <input type="text" class="form-control" name = "juniorcollege" id="juniorcollege">
+          </div>
+
+          <div class="col-sm-5">
+            <label for="12board" class="form-label">12th Board</label>
+            <input type="text" class="form-control" name = "12board" id="12board">
+          </div>
+        </div>
+        
+
+        <div class="row pl-2">
+          <div class="col-sm-5">
+            <label for="12percentage" class="form-label">Passing Percentage</label>
+            <input type="Number" class="form-control" name = "12percentage" id="12percentage">
+          </div>
+
+          <div class="col-sm-5">
+            <label for="12year" class="form-label">Passout year</label>
+            <input type="Number" class="form-control" name = "12year" id="12year">
+          </div>
+        </div>
+
+        
+        <H2>Degree Education</H2>
+          <div class="row pl-2">
+          <div class="col-sm-5">
+            <label for="Degreecollege" class="form-label">Degree College</label>
+            <input type="text" class="form-control" name = "degreecollege" id="degreecollege">
+          </div>
+
+          <div class="col-sm-5">
+            <label for="university" class="form-label">University</label>
+            <input type="text" class="form-control" name = "university" id="university">
+          </div>
+        </div>
+
+        <div class="col-sm-5">
+          <label for="Passing Percentage" class="form-label">Degree in</label>
+          <input type="text" class="form-control" name = "degree" id="degree">
+        </div>
+
+        <div class="row pl-2">
+          <div class="col-sm-5">
+            <label for="Passing Percentage" class="form-label">Passout year</label>
+            <input type="Number" class="form-control" name = "year" id="year">
+          </div>
+
+          <div class="col-sm-5">
+            <label for="Passing Percentage" class="form-label">Passing Percentage</label>
+            <input type="Number" class="form-control" name = "percentage" id="percentage">
+          </div>
+        </div>
+
+        <div class="col-sm-10">
+          <label for="Pastjob" class="form-label">Past jobs</label>
+          <input type="text" class="form-control" name = "pastjob" id="pastjob">
+        </div>
+
+    <div class="my-5">
+      <H1>Emergency Contact</H1>  
+        <div class="row pl-2">
+            <label for="Name" class="form-label">Name</label>
+            <div class="col-sm-3">
+              <input type="text" class="form-control" name = "EFname" placeholder="First name" aria-label="Emergency First name">
+            </div>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name = "EMname" placeholder="Middle name" aria-label="Emergency Middle name">
+              </div>
+            <div class="col-sm-4">
+              <input type="text" class="form-control" name = "ELname" placeholder="Last name" aria-label="Emergency Last name">
+            </div>
+        </div>
+
+        <div class="sm-4">
+          <select class="form-select my-2 sm-2" style="width: fit-content;
+          border-radius: 2rem;" name="Egender"aria-label="Default select example">
+            <option selected>Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          </div>
+
+        <div class="col-sm-5">
+          <label for="EmergencyinputEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" name = "Eemail" id="EmergencyinputEmail">
+        </div>
+  
+        <div class="col-sm-5">
+          <label for="Emergencycontact" class="form-label">Contact</label>
+          <input type="Number" class="form-control" name = "Econtact" id="Emergencycontact">
+        </div>
+  
+        <div class="col-sm-10">
+          <label for="EmergencyinputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" name = "Eaddress" id="EmergencyinputAddress" placeholder="Enter Address">
+        </div>
+  
+         
+      </div>
+ <button type="submit" class="btn btn-primary">Submit</button>
+ 
+
+</form>
+
+{%endblock body%}

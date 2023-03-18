@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{%block title%}Profile{%endblock title%}
+{%block body%}
+
+<div class="my-5 py-5>"
+  <div class="col-3">
+    <img src="/media/{{profile.face}}"/>
+  </div>
+  <div class="card">
+    
+        <H2>Personal Details</H2>
+    <div class="card-body px-2">
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Name:</label>
+        {{profile.Fname}}   {{profile.Mname}}   {{profile.Lname}}   
+        </div>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+         {{profile.email}}
+        </div>  
+         <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Contact:</label>
+         {{profile.contact}}     
+        </div>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Address:</label>
+
+        {{profile.address}}     {{profile.state}}   {{profile.city}}  {{profile.zip}} 
+        </div>
+        
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <H2>Bank Details</H2>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 "> Bank Name:</label>
+        {{profile.Bankname}}   
+        </div>  
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 ">Bank Branch:</label>
+        {{profile.Bankbranch}}
+        </div>     
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 ">IFSC Code:</label>
+        {{profile.IFSCCode}}
+        </div>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 ">Banck Account Number:</label>
+        {{profile.BankAC}}   
+        </div> 
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-body">
+      <H2>Work Details</H2>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2">Employee SSN</label>
+            {{profile.EmpSSN}}
+        </div>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2">Job Post</label>
+            {{profile.post}}
+        </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2">Date of Joining</label>
+              {{profile.joining_date}} 
+            </div>
+              <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2">Branch</label>
+               {{profile.branch}}  
+              </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2">Description</label>
+               {{profile.description}}
+            </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <H2>Education</H2>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">School</label>
+           {{profile.school}}
+        </div>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">10th Board</label>
+            {{profile.tenboard}}
+        </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">10th Passout Year</label>
+              {{profile.tenyear}} 
+            </div>
+              <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">10th Percentage</label>
+            {{profile.tenpercentage}}  
+              </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">12th Board</label>
+              {{profile.twelveboard}}
+            </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">12th Passout Year</label>
+              {{profile.twelveyear}}
+            </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">12th Percentage</label>
+              {{profile.twelvepercentage}}
+            </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Degree</label>
+              {{profile.degree}}
+            </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Passout Year</label>
+              {{profile.year}}
+            </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Percentage</label>
+              {{profile.percentage}}
+            </div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <div class="card-body">
+      <H2>Family Details</H2>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Name:</label>
+        
+        {{profile.EFname}} {{profile.EMname}} {{profile.ELname}}
+           </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email:</label>
+                {{profile.Eemail}}
+            </div>
+                <div class="mb-3 row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Contact:</label>
+                    {{profile.Econtact}}
+                </div>
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Address:</label>
+                          {{profile.Eaddress}}  
+                    </div>
+    </div>
+  </div>
+</div>
+{%endblock body%}

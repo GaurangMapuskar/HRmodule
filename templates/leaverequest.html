@@ -1,0 +1,52 @@
+{% extends 'base(user).html' %}
+{%block title%}Leave Request{%endblock title%}
+{%block body%}
+<form method="post" action="leaverequest{{emp.EmpSSN}}" class="px-5 my-5">
+  {% csrf_token %}
+  <H1>Personal Details</H1>
+  <div class="row pl-2">
+      <label for="Name" class="form-label">Name</label>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" name = "Fname" placeholder="First name" aria-label="First name">
+      </div>
+      <div class="col-sm-3">
+          <input type="text" class="form-control" name = "Mname" placeholder="Middle name" aria-label="Middle name">
+        </div>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" name = "Lname" placeholder="Last name" aria-label="Last name">
+      </div>
+  </div>
+  <div class="col-sm-5">
+    <label for="EmpSSN" class="form-label">Employee SSN</label>
+    <input type="Number" class="form-control" name="EmpSSN" id="EmpSSN">
+  </div>
+
+  <div class="col-sm-5">
+    <label for="startdate" class="form-label">Start Date</label>
+    <input type="date" class="form-control" name="sdate" id="startdate">
+  </div>
+
+  <div class="col-sm-5">
+    <label for="enddate" class="form-label">End Date</label>
+    <input type="date" class="form-control" name="edate" id="enddate">
+  </div>
+
+  <div class="sm-4">
+    <select class="form-select my-2 sm-2" name="leavetype"aria-label="Default select example">
+      <option selected>Leave Type</option>
+      <option value="CL">Casual Leave(CL)</option>
+      <option value="ML">Medical Leave(ML)</option>
+      <option value="halfday">Half Day Leave</option>
+    </select>
+  </div>
+
+  <div class="col-sm-5">
+    <label for="reason" class="form-label">Reason</label>
+    <input type="text" class="form-control" name="reason" id="reason">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+
+</form>
+{%endblock body%}

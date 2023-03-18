@@ -1,0 +1,21 @@
+{% extends 'base(user).html' %}
+{%block title%}Employee Data{%endblock title%}
+{%block body%}
+<div class="my-5 py-5">
+{% for job in job %}
+<div class="card my-3 mx-3" style="width:90rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{job.vacany}}</h5>
+    <p class="card-text">Details: {{job.comment}}</p>
+    <p class="card-text">Name of co-ordinator: {{job.name}}</p>
+    <p class="card-text">Email: {{job.email}}</p>
+    <p class="card-text">Contact: {{job.contact}}</p>
+    <p class="card-text">Minimum Qualification: {{job.minqualification}}</p>
+    
+
+    <a href="jobapplication" class="card-link">Apply Now</a>
+    
+  </div>
+</div>
+{% endfor %}
+{%endblock body%}
