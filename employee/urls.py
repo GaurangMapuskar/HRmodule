@@ -21,9 +21,18 @@ path("leaveapproval",views.leaveapproval,name='leaveapproval'),
 path("leavedeny<int:id>",views.leavedeny,name='leavedeny'),
 path("leaveapprove<int:id>",views.leaveapprove,name='leaveapprove'),
 
-path("test",views.test,name='test')
+path("test",views.test,name='test'),
+
+#drishti module integrate
+
+path("table", views.tables, name="tables"),
+path("create-salary-record/", views.createSalaryRecord, name="create-salary-record"),
+path("update/<int:pk>/", views.viewUpdateData, name="update"),
+path("update-salary/<int:pk>/", views.updateSalary, name="update-salary"),
+path("mail/<int:pk>/", views.mail, name='sendmail'),
+path("format", format, name='format')
 ]
+
 
 if settings.DEBUG:
     urlpatterns+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
- 

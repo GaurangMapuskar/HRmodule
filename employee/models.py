@@ -81,3 +81,25 @@ class leave(models.Model):
     reason=models.TextField(null=True)
     name=models.CharField(null=True, max_length=50)
     approval=models.CharField(default="pending", max_length=50)
+
+#drishti module integrate
+
+
+class Salary(models.Model):
+    month_year = models.DateTimeField()
+    base_salary = models.DecimalField(max_digits=19, decimal_places=2)
+    house_rent_allowance = models.DecimalField(max_digits=10, decimal_places=2)
+    conveyance_allowance = models.DecimalField(max_digits=10, decimal_places=2, default=1600) # type: ignore
+    medical_allowance = models.DecimalField(max_digits=10, decimal_places=2, default=1250) # type: ignore
+    special_allowance = models.DecimalField(max_digits=10, decimal_places=2)
+    provided_fund = models.DecimalField(max_digits=10, decimal_places=2)
+    health_insurance = models.DecimalField(max_digits=10, decimal_places=2)
+    professional_tax = models.DecimalField(max_digits=10, decimal_places=2, default=200) # type: ignore
+    tds = models.DecimalField(max_digits=10, decimal_places=2)
+    other_reductions = models.DecimalField(max_digits=10, decimal_places=2, default=0, null=True) # type: ignore
+    total_deductions = models.DecimalField(max_digits=10, decimal_places=2, default=0, null=True)  # type: ignore
+    # total_deductions = provided_fund + health_insurance + professional_tax + tds + other_reductions
+    gross_salary = models.DecimalField(max_digits=19, decimal_places=2, default=0, null=True) # type: ignore
+    # gross_salary = base_salary + house_rent_allowance + conveyance_allowance + medical_allowance + special_allowance
+    net_salary = models.DecimalField(max_digits=19, decimal_places=2, default=0, null=True) # type: ignore
+    # net_salary = gross_salary - total_dedecutions

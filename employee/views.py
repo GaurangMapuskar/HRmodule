@@ -3,11 +3,17 @@ from django.shortcuts import render,HttpResponse,redirect
 from django.contrib import messages
 from django.urls import reverse
 
-from employee.models import Employee
-from employee.models import attendance
-from employee.models import Jobposting
-from employee.models import schedule
-from employee.models import leave
+import time
+from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+
+from .models import *
+
 
 # Create your views here.
 def base(request):
@@ -92,8 +98,8 @@ def addattendance(request):
         
 
         
-        t1=datetime.strptime(intime , '%H:%M').time()
-        t2=datetime.strptime(outtime , '%H:%M').time()
+        t1=datetime.strftime(intime , '%H:%M').time()  # type: ignore
+        t2=datetime.strftime(outtime , '%H:%M').time() # type: ignore
         #time = attendance.objects.get()
         workinghours=t2.hour-t1.hour
         if(workinghours<7):
@@ -276,3 +282,129 @@ def leavedeny(request,id):
     messages.success(request, 'Leave request was denyed.')
     return render (request,'leaveapproval.html')
    
+
+#Drishti module intergated
+def samp(request):
+    return render(request, "samp.html")
+
+def index(request):
+    return render(request, "index.html")
+
+def tables(request):
+    # baseSalary = Salary.objects.only('base_salary')
+    # houseRentAllowance = Salary.objects.only('house_rent_allowance')
+    # conveyanceAllowance = Salary.objects.only('conveyance_allowance')
+    # medicalAllowance = Salary.objects.only('medical_allowance')
+    # specialAllowance = Salary.objects.only('special_allowance')
+    # grossSalary = (baseSalary+houseRentAllowance+conveyanceAllowance+medicalAllowance+specialAllowance)
+    # salary = Salary(
+    #     gross_salary = grossSalary
+    # )
+    # salary.save(update_fields=['gross_salary'])
+    # print(grossSalary)
+    salary = Salary.objects.all()
+    return render(request, "salary.html", {'salary': salary})
+
+def createSalaryRecord(request):
+    time.sleep(2)
+    if request.method=="POST":
+        salary = Salary()
+        salary.month_year = request.POST["Date"]
+        salary.base_salary = request.POST["BaseSalary"]
+        # salary.house_rent_allowance = request.POST["HRA"]
+        hra = (40/100) * float(request.POST["BaseSalary"])
+        salary.house_rent_allowance = hra # type: ignore
+        # salary.conveyance_allowance = request.POST["CA"]
+        ca = 1600
+        salary.conveyance_allowance = ca
+        # salary.medical_allowance = request.POST["MA"]
+        ma = 1250
+        salary.medical_allowance = ma
+        salary.special_allowance = request.POST["SA"]
+        # salary.provided_fund = request.POST["PF"]
+        pf = (12/100) * float(request.POST["BaseSalary"])
+        salary.provided_fund = pf # type: ignore
+        salary.health_insurance = request.POST["HealthInsurance"]
+        # salary.professional_tax = request.POST["Tax"]
+        tax = 200
+        salary.professional_tax = tax
+        salary.tds = request.POST["TDS"]
+        salary.other_reductions = request.POST["Other"]
+        gross_salary = float(request.POST["BaseSalary"]) + hra + ca + ma + float(request.POST["SA"])
+        total_deductions = pf + float(request.POST["HealthInsurance"]) + tax + float(request.POST["TDS"]) + float(request.POST["Other"])
+        salary.gross_salary = gross_salary
+        salary.total_deductions = total_deductions
+        salary.net_salary = gross_salary - total_deductions
+        salary.save()
+        return redirect('tables')
+    else:
+        return redirect('tables')
+
+def updateSalary(request, pk):
+    time.sleep(2)
+    if request.method=="POST":
+        salary = Salary.objects.get(id=pk)
+        salary.base_salary = request.POST["BaseSalary1"]
+        hra = (40/100) * float(request.POST["BaseSalary1"])
+        salary.house_rent_allowance = hra # type: ignore
+        # salary.house_rent_allowance = request.POST["HRA1"]
+        salary.conveyance_allowance = request.POST["CA1"]
+        salary.medical_allowance = request.POST["MA1"]
+        salary.special_allowance = request.POST["SA1"]
+        # salary.provided_fund = request.POST["PF1"]
+        pf = (12/100) * float(request.POST["BaseSalary1"])
+        salary.provided_fund = pf # type: ignore
+        salary.health_insurance = request.POST["HealthInsurance1"]
+        salary.professional_tax = request.POST["Tax1"]
+        salary.tds = request.POST["TDS1"]
+        salary.other_reductions = request.POST["Other1"]
+        gross_salary = float(request.POST["BaseSalary1"]) + hra + float(request.POST["CA1"]) + float(request.POST["MA1"]) + float(request.POST["SA1"])
+        total_deductions = pf + float(request.POST["HealthInsurance1"]) + float(request.POST["Tax1"]) + float(request.POST["TDS1"]) + float(request.POST["Other1"])
+        salary.gross_salary = gross_salary
+        salary.total_deductions = total_deductions
+        salary.net_salary = gross_salary - total_deductions
+        salary.save()
+        return redirect('tables')
+
+def viewUpdateData(request, pk):
+    print('------>>>-----')
+    getdata = Salary.objects.get(id=pk)
+    data = []
+    item = {
+        'baseSalary1': getdata.base_salary,
+        'hra1': getdata.house_rent_allowance,
+        'ca1': getdata.conveyance_allowance,
+        'ma1': getdata.medical_allowance,
+        'sa1': getdata.special_allowance,
+        'pf1': getdata.provided_fund,
+        'healthInsurance1': getdata.health_insurance,
+        'tax1': getdata.professional_tax,
+        'tds1': getdata.tds,
+        'other1': getdata.other_reductions,
+        'date1': getdata.month_year
+
+    }
+    data.append(item)
+    return JsonResponse({'data': data})
+
+def mail(request, pk):
+    if request.method == "POST":
+        salary = Salary.objects.get(id=pk)
+        html_content = render_to_string("copy.html", {'content': salary})
+        text_content = strip_tags(html_content)
+
+        email = EmailMultiAlternatives(
+            "Testing",#subject
+            text_content,#content
+            'prabhapamula12@gmail.com',#from_email
+            ['2020.drishti.samvedi@ves.ac.in']#to email
+        )
+        email.attach_alternative(html_content,"text/html")
+        email.send()
+        print('email sent')
+        return redirect('tables')
+    
+    # return render(request, 'mailslip.html')
+
+def format(request):
+    return render(request, 'copy.html')

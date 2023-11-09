@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .td_style{
+            padding: 5px;
+            width: auto;
+        }
+        .bottom{
+            border-bottom: 1px solid black;
+        }
+        .right{
+          
+            border-right: 1px solid black;
+        }
+      
+    </style>
+  </head>
+
+  <body 
+  marginheight="0"
+  topmargin="0"
+  marginwidth="0"
+  style="margin: 0px; background-color: #f2f3f8"
+  leftmargin="0">
+
+    <table 
+    cellspacing="0"
+    border="0"
+    cellpadding="0"
+    width="100%"
+    bgcolor="#f2f3f8"
+    style="
+      @import url(https://fonts.googleapis.com/css?family=Rubik:300,400,500,700|Open+Sans:300,400,600,700);
+      font-family: 'Open Sans', sans-serif;">
+      <tr>
+        <td>
+            <table 
+            style="background-color: #f2f3f8; max-width: 670px; margin: 0 auto"
+            width="100%"
+            border="0"
+            align="center"
+            cellpadding="0"
+            cellspacing="0">
+            <tr>
+                <td style="height: 80px">&nbsp;</td>
+              </tr>
+            <tr>
+                <td>
+                    <table 
+                    width="95%"
+                    border="0"
+                    align="center"
+                    cellpadding="0"
+                    cellspacing="0"
+                    style="
+                      max-width: 670px;
+                      background: #fff;
+                      border-radius: 3px;
+                      -webkit-box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+                      -moz-box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+                      box-shadow: 0 6px 18px 0 rgba(0, 0, 0, 0.06);
+                      padding: 0 40px; ">
+                      <tr>
+                        <td style="height: 40px">&nbsp;</td>
+                      </tr>
+                      <!-- Title -->
+                      <tr>
+                        <td style="padding: 0 15px; text-align: center">
+                          <h1
+                            style="
+                              color: #1e1e2d;
+                              font-weight: 400;
+                              margin: 0;
+                              font-size: 32px;
+                              font-family: 'Rubik', sans-serif;"
+                          >
+                            Company Name
+                          </h1>
+                          <h4 style="padding: 0 15px; text-align: center">Salary slip of October 2022</h4>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <table 
+                            cellpadding="0"
+                            cellspacing="0"
+                            style="width: 100%; border: 1px solid black">
+                                <tbody>
+                                    <tr>
+                                        <td class="td_style">Name:</td>
+                                        <td class="td_style">{{content.id}}</td>
+                                        <td class="td_style">Department:</td>
+                                        <td class="td_style">{{content.id}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td_style">Emp No:</td>
+                                        <td class="td_style">{{content.id}}</td>
+                                        <td class="td_style">Bank Name:</td>
+                                        <td class="td_style">{{content.id}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td_style">Designation:</td>
+                                        <td class="td_style">{{content.id}}</td>
+                                        <td class="td_style">A/c No.:</td>
+                                        <td class="td_style">{{content.id}}</td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="height: 20px">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>
+                            <table 
+                            cellpadding="0"
+                            cellspacing="0"
+                            style="width: 100%; border: 1px solid black">
+                                <tbody>
+                                    <tr>
+                                        <td class="td_style right bottom" colspan="2">Earnings</td>
+                                        <td class="td_style bottom" colspan="2">Deductions</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td_style">Basic Salary</td>
+                                        <td class="td_style right">{{content.base_salary}}</td>
+                                        <td class="td_style">ESIC</td>
+                                        <td class="td_style">1600</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td_style">HRA</td>
+                                        <td class="td_style right">{{content.house_rent_allowance}}</td>
+                                        <td class="td_style">Provident Fund</td>
+                                        <td class="td_style">{{content.provided_fund}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td_style">Conveyance Allowance</td>
+                                        <td class="td_style right">{{content.conveyance_allowance}}</td>
+                                        <td class="td_style">Professional Tax</td>
+                                        <td class="td_style">{{content.professional_tax}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td_style">Medical Allowance</td>
+                                        <td class="td_style right">{{content.medical_allowance}}</td>
+                                        <td class="td_style">TDS</td>
+                                        <td class="td_style">{{content.tds}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td_style">Special Allowance</td>
+                                        <td class="td_style right">{{content.special_allowance}}</td>
+                                        <td class="td_style"></td>
+                                        <td class="td_style"></td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td_style">Gross Salary</td>
+                                        <td class="td_style right">{{content.gross_salary}}</td>
+                                        <td class="td_style">Total Deductions</td>
+                                        <td class="td_style">{{content.total_deductions}}</td>
+                                      </tr>
+                                      <tr>
+                                        <td class="td_style right" style="border-top: 1px solid black;" colspan="2">Net Pay</td>
+                                        <td class="td_style" style="border-top: 1px solid black;" colspan="2">{{content.net_salary}}</td>
+                                      </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="height: 40px">&nbsp;</td>
+                      </tr>
+                      </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 80px">&nbsp;</td>
+              </tr>
+            </table>
+        </td>
+      </tr>
+      </table>
+
+  </body>
+</html>
